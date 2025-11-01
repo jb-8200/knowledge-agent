@@ -1,6 +1,6 @@
 # Knowledge Agent - Project Structure
 
-**Last Updated**: November 1, 2025
+**Last Updated**: November 1, 2025 (deduplicated documentation)
 **Status**: Ready for development
 
 ## Directory Structure
@@ -211,39 +211,18 @@ knowledge-agent/
 
 ### For Progress Monitoring
 
-**Pattern**: Adapted from genai-specs Cursor Plans for active work tracking
+**Pattern**: Symlink-based active work tracking (genai-specs Cursor Plans)
 
-**Start working on a feature**:
-```bash
-./scripts/start-feature.sh 01-project-setup
-# Creates symlink: .claude/plans/01-project-setup-task.plan.md
-# Git commit: git add .claude/plans/ && git commit -m "Start F01"
-```
+**Quick commands**:
+- Start: `./scripts/start-feature.sh <feature-name>`
+- Check: `ls .claude/plans/`
+- Complete: `./scripts/complete-feature.sh <feature-name>`
 
-**Check active work**:
-```bash
-ls .claude/plans/
-# Shows: All features currently in progress
-```
-
-**Complete a feature**:
-```bash
-./scripts/complete-feature.sh 01-project-setup
-# Removes symlink after verifying all acceptance criteria met
-# Git commit: git add .claude/plans/ && git commit -m "Complete F01"
-```
-
-**Manual approach** (if scripts not available):
-```bash
-# Start: Create symlink
-cd .claude/plans
-ln -s ../../.work-items/01-project-setup/task.md 01-project-setup-task.plan.md
-
-# Complete: Remove symlink
-rm .claude/plans/01-project-setup-task.plan.md
-```
-
-**See also**: `.claude/plans/README.md` for full documentation
+**Full documentation**: See `.claude/plans/README.md` for:
+- Complete lifecycle management
+- Time tracking workflow
+- Verification requirements
+- Manual commands and examples
 
 ---
 

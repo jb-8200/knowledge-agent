@@ -4,6 +4,8 @@
 
 **Pattern**: Adapted from genai-specs Cursor Plans for Claude Code
 
+**Note**: This is the **single source of truth** for progress monitoring and time tracking workflows. Other files (`PROJECT_STRUCTURE.md`, `.claude/DEVELOPMENT.md`) provide brief overviews with references to this document for detailed information.
+
 ---
 
 ## Overview
