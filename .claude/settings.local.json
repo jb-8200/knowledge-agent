@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(for feature in 01-project-setup 02-document-ingestion 03-vector-search-rag 04-external-search 05-answer-synthesis 06-web-ui 07-youtube-thumbnails 08-similar-questions 09-pin-answers 10-download-markdown 11-deployment 12-testing-feedback 13-spec-driven-integration)",
+      "Bash(do echo \"Processing $feature...\")",
+      "Bash(done)",
+      "Bash(./scripts/claude-init.sh)",
+      "Bash(./scripts/copy-genai-specs.sh)",
+      "WebFetch(domain:github.com)",
+      "Bash(chmod:*)",
+      "Bash(for dir in /Users/jbellish/VSProjects/knowledge-agent/.work-items/*/)",
+      "Bash(for dir in */)",
+      "Bash(do echo '=== $dir%/ ===')",
+      "Bash(for dir in 01-project-setup 02-document-ingestion 03-vector-search-rag 04-external-search 05-answer-synthesis 06-web-ui 07-youtube-thumbnails 08-similar-questions 09-pin-answers 10-download-markdown 11-deployment 12-testing-feedback 13-spec-driven-integration)",
+      "Bash(do echo '=== $dir ===')",
+      "Bash(test:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

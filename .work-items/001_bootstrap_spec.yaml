@@ -1,0 +1,20 @@
+id: WI-001
+user_story: >-
+  As a developer, I need the project to be configured for
+  spec‑driven development so that Claude Code can read our rules and
+  standards automatically.
+spec_refs:
+  - rules/process-01.mdc
+  - rules/standards-task.mdc
+acceptance_tests:
+  - test_task_31
+code_targets:
+  - rules/
+  - scripts/claude-init.sh
+  - .vale.ini
+  - .markdownlint-cli2.yaml
+description: >-
+  Create the rules directory, add placeholders for the core standard
+  files, set up linting configuration, and write a bootstrap script
+  that seeds the context for Claude Code.  See spec 31–34 for
+  implementation details.

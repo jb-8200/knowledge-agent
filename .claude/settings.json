@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "projectName": "knowledge-agent",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "python",
+            "path": ".claude/hooks/pre_prompt.py",
+            "symbol": "pre_prompt_hook"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "python",
+            "path": ".claude/hooks/pre_patch.py",
+            "symbol": "pre_patch_hook"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "python",
+            "path": ".claude/hooks/pre_commit.py",
+            "symbol": "pre_commit_hook"
+          }
+        ]
+      }
+    ]
+  }
+}

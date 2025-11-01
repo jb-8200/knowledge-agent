@@ -1,0 +1,27 @@
+# Example golden queries for nightly evaluation
+#
+# Each entry defines a representative user query and lists the key
+# facts or points that a correct answer should contain, along with
+# allowed internal and external sources.  The evaluation harness uses
+# these examples to detect regressions in retrieval quality and
+# citation accuracy.
+
+queries:
+  - id: Q001
+    question: "What is retrieval augmented generation (RAG)?"
+    expected_points:
+      - "Definition of RAG"
+      - "Separation between retrieval and generation components"
+      - "Advantages such as factual grounding"
+    allowed_sources:
+      - "internal_docs"
+      - "wikipedia.org"
+  - id: Q002
+    question: "How does Firecrawl improve web ingestion?"
+    expected_points:
+      - "Fetches full HTML pages"
+      - "Parses metadata like canonical URL and timestamps"
+      - "Facilitates deterministic citations"
+    allowed_sources:
+      - "internal_docs"
+      - "official Firecrawl documentation"
