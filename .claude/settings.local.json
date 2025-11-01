@@ -34,7 +34,9 @@
       "Bash(printf:*)",
       "Bash(./scripts/complete-feature.sh:*)",
       "Bash(./venv/bin/pytest tests/test_upload_endpoint.py -v)",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(./venv/bin/pytest tests/test_link_ingestion.py -v)",
+      "Bash(./venv/bin/pytest tests/test_link_ingestion.py -v --tb=short)"
     ],
     "deny": [],
     "ask": []
