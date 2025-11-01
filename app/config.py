@@ -44,6 +44,10 @@ class Config(BaseSettings):
     debug: bool = False
     log_level: str = "INFO"
 
+    # Upload Configuration
+    max_upload_size: int = 10 * 1024 * 1024  # 10MB default
+    upload_temp_dir: str = "/tmp/kb_uploads"
+
     # Pydantic v2 configuration
     model_config = SettingsConfigDict(
         env_file=".env",
