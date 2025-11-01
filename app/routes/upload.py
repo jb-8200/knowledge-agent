@@ -190,20 +190,34 @@ async def upload_file(
 def start_ingestion(file_path: str, filename: str, ingestion_id: str):
     """Start the ingestion pipeline for an uploaded file.
 
-    This is a placeholder that will be implemented in later steps.
+    Orchestrates: parse → chunk → embed → store vectors → save artifact
 
     Args:
         file_path: Path to the uploaded file
         filename: Original filename
         ingestion_id: Unique ingestion identifier
     """
-    # TODO: Implement in step 03-05
-    # 1. Parse document to extract text
-    # 2. Chunk text into passages
-    # 3. Generate embeddings
-    # 4. Store in Qdrant
-    # 5. Save artifact
-    print(f"[INGESTION] Processing {filename} (ID: {ingestion_id}) from {file_path}")
+    from ingestion.pipeline import get_pipeline
+
+    logger.info(f"[INGESTION] Starting pipeline for {filename} (ID: {ingestion_id})")
+
+    try:
+        pipeline = get_pipeline()
+        result = pipeline.ingest_file(file_path, filename)
+        logger.info(
+            f"[INGESTION] Completed {ingestion_id}: "
+            f"doc_id={result['doc_id']}, artifact_id={result['artifact_id']}, "
+            f"chunks={result['chunks_created']}"
+        )
+    except Exception as e:
+        logger.error(f"[INGESTION] Failed {ingestion_id}: {e}", exc_info=True)
+    finally:
+        # Clean up temp file
+        try:
+            os.remove(file_path)
+            logger.debug(f"Removed temp file: {file_path}")
+        except Exception as cleanup_error:
+            logger.warning(f"Failed to remove temp file {file_path}: {cleanup_error}")
 
 
 @router.post("/link")

@@ -137,6 +137,35 @@ def normalize_whitespace(text: str) -> str:
     return text.strip()
 
 
+def parse_txt(file_path: str) -> str:
+    """Extract text from a plain text file.
+
+    Args:
+        file_path: Path to the text file
+
+    Returns:
+        File contents
+
+    Raises:
+        FileNotFoundError: If file doesn't exist
+    """
+    path = Path(file_path)
+    if not path.exists():
+        raise FileNotFoundError(f"Text file not found: {file_path}")
+
+    try:
+        # Try UTF-8 first
+        with open(file_path, 'r', encoding='utf-8') as f:
+            text = f.read()
+    except UnicodeDecodeError:
+        # Fallback to latin-1
+        logger.warning(f"UTF-8 decode failed for {file_path}, trying latin-1")
+        with open(file_path, 'r', encoding='latin-1') as f:
+            text = f.read()
+
+    return normalize_whitespace(text)
+
+
 def parse_file(file_path: str) -> str:
     """Parse a file based on its extension.
 
@@ -158,6 +187,7 @@ def parse_file(file_path: str) -> str:
         '.docx': parse_docx,
         '.md': parse_markdown,
         '.markdown': parse_markdown,
+        '.txt': parse_txt,
     }
 
     if suffix not in parsers:
