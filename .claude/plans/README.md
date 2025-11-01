@@ -83,6 +83,67 @@ Same as completing - remove the symlink. Re-create it when resuming.
 
 ---
 
+## Time Tracking
+
+### Purpose
+
+Track development efficiency by comparing estimated vs actual time for each step.
+
+### How It Works
+
+**Estimates**: Each `task.md` file includes time estimates per step (e.g., "2-3 hours")
+
+**Actual Time**: Calculate from timestamps or active work tracking
+- **Start**: When work begins on a step (e.g., Red Phase)
+- **End**: When step completion commit is made
+- **Midpoint**: Use average of estimate range for comparison
+
+**Commit Message Format**:
+
+```
+⏱️  Time Tracking:
+- Estimated: 2-3 hours
+- Actual: 45 minutes
+- Time saved: 1.75 hours (70% faster than estimate)
+```
+
+### Benefits
+
+- **Visibility**: See actual productivity gains from Claude Code + TDD
+- **Planning**: Improve future estimates based on actual data
+- **Motivation**: Celebrate efficiency improvements
+- **Reporting**: Demonstrate ROI of development process
+
+### Example Calculation
+
+For F02 Step 01 (File Upload Endpoint):
+- **Estimated**: 2-3 hours (midpoint: 2.5 hours)
+- **Actual**: ~45 minutes of active work
+- **Saved**: 1.75 hours (70% faster)
+- **Method**: Based on conversation flow and git commits
+
+**Note**: Git timestamps may not reflect breaks or full development cycle. Track active work time when possible.
+
+### Adding to Commits
+
+Include time tracking at the end of step completion commits:
+
+```bash
+git commit -m "feat: implement feature X
+
+[implementation details]
+
+⏱️  Time Tracking:
+- Estimated: 2-3 hours
+- Actual: 45 minutes
+- Time saved: 1.75 hours (70% faster than estimate)
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+"
+```
+
+---
+
 ## Checking Active Work
 
 ### List All Active Features

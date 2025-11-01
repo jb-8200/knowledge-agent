@@ -67,5 +67,11 @@ Technology-specific guidelines are auto-loaded by file extension:
 
 You may explicitly reference any rule file with @./rules/<file>.mdc
 
+⏱️  Time Tracking Enabled:
+  • Each step has time estimates in task.md files
+  • Track actual time: start-feature.sh → complete-feature.sh
+  • Add time saved to commit messages (see .claude/plans/README.md)
+  • Format: Estimated vs Actual vs Time Saved
+
 Ready to proceed with spec-driven development!
 PROMPT
