@@ -64,12 +64,27 @@ User Query → RAG Retriever (Qdrant) → Synthesizer (decides if external neede
 
    ```bash
    cp .env.template .env
-   # Edit .env with your API keys:
-   # - MODEL_PROVIDER_API_KEY (OpenAI, Anthropic, etc.)
-   # - QDRANT_URL (or use local mode)
-   # - TAVILY_API_KEY (for web search)
-   # - YOUTUBE_API_KEY (optional, for video features)
    ```
+
+   Edit `.env` and add your API keys:
+
+   ```bash
+   # Required for non-local LLM providers
+   LLM_PROVIDER=openai  # or 'anthropic', 'google', 'local'
+   LLM_API_KEY=your_api_key_here
+
+   # Optional: Vector database (defaults to local)
+   QDRANT_URL=http://localhost:6333
+
+   # Optional: External search (required for CAG features)
+   SEARCH_API_KEY=your_tavily_key_here
+   FIRECRAWL_API_KEY=your_firecrawl_key_here
+
+   # Optional: YouTube features
+   YOUTUBE_API_KEY=your_youtube_key_here
+   ```
+
+   See `.env.template` for complete documentation of all available options.
 
 ### Running Tests
 
@@ -82,6 +97,16 @@ pytest --cov=app
 
 # Run specific test file
 pytest tests/test_setup.py -v
+```
+
+### Verify Installation
+
+```bash
+# Activate virtual environment
+source venv/bin/activate
+
+# Verify configuration loads correctly
+python3 -c "from app import get_config; config = get_config(); print(f'Config loaded: {config.llm_provider}')"
 ```
 
 ### Development
