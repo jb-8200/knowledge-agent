@@ -1,5 +1,5 @@
 """Ingestion module for document and link processing."""
 
-from . import parsers, chunker, firecrawl_client
+from . import parsers, chunker, firecrawl_client, embeddings, vector_store
 
-__all__ = ["parsers", "chunker", "firecrawl_client"]
+__all__ = ["parsers", "chunker", "firecrawl_client", "embeddings", "vector_store"]

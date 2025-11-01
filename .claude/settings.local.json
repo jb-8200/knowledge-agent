@@ -37,7 +37,9 @@
       "Bash(git log:*)",
       "Bash(./venv/bin/pytest tests/test_link_ingestion.py -v)",
       "Bash(./venv/bin/pytest tests/test_link_ingestion.py -v --tb=short)",
-      "Bash(./venv/bin/pytest tests/test_parsers.py tests/test_chunker.py -v)"
+      "Bash(./venv/bin/pytest tests/test_parsers.py tests/test_chunker.py -v)",
+      "Bash(curl:*)",
+      "Bash(./venv/bin/pytest:*)"
     ],
     "deny": [],
     "ask": []
