@@ -1,0 +1,48 @@
+# ============================================================================
+# Knowledge Agent - Core Dependencies
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# Core LLM & Agent Framework
+# ----------------------------------------------------------------------------
+langchain==0.3.7                # LLM framework for agent orchestration
+langchain-community==0.3.5      # Community integrations for LangChain
+langchain-core==0.3.19          # Core abstractions and base classes
+
+# ----------------------------------------------------------------------------
+# RAG Components - Vector Search & Embeddings
+# ----------------------------------------------------------------------------
+qdrant-client==1.12.1           # Vector database for semantic search
+sentence-transformers==3.3.1     # Embedding models for document encoding
+
+# ----------------------------------------------------------------------------
+# CAG Components - External Search
+# ----------------------------------------------------------------------------
+firecrawl-py==4.5.0             # Web content extraction and crawling
+tavily-python==0.5.0            # Web search API integration
+
+# ----------------------------------------------------------------------------
+# Web API Framework
+# ----------------------------------------------------------------------------
+fastapi==0.115.5                # Modern async web framework
+uvicorn[standard]==0.32.1       # ASGI server with WebSocket support
+
+# ----------------------------------------------------------------------------
+# Configuration Management
+# ----------------------------------------------------------------------------
+python-dotenv==1.0.1            # Environment variable loading
+pydantic==2.10.2                # Data validation and settings
+pydantic-settings==2.6.1        # Settings management with Pydantic
+
+# ----------------------------------------------------------------------------
+# Development Tools - Testing
+# ----------------------------------------------------------------------------
+pytest==8.3.3                   # Testing framework
+pytest-asyncio==0.24.0          # Async test support
+pytest-cov==6.0.0               # Code coverage reporting
+
+# ----------------------------------------------------------------------------
+# Development Tools - Code Quality
+# ----------------------------------------------------------------------------
+mypy==1.13.0                    # Static type checking
+ruff==0.8.2                     # Fast Python linter and formatter
