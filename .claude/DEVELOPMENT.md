@@ -118,6 +118,29 @@ ls .claude/plans/                                 # Check active work
 - Integration with development workflow
 - Troubleshooting and examples
 
+## 🤖 Custom Slash Commands & Skills
+
+**Commands** (`.claude/commands/`):
+```bash
+/start-feature {name}     # Start a feature (creates symlink, shows task overview)
+/next-step                # Show current step with TDD guidance
+/verify-step              # Check acceptance criteria for current step
+/complete-feature {name}  # Verify all criteria and complete feature
+/test-rag [query]         # Test RAG pipeline end-to-end
+/ingest {file|url}        # Quick document ingestion for testing
+```
+
+**Skills** (`.claude/skills/`):
+- `tdd-workflow` - TDD cycle guidance, testing best practices, pytest usage
+- `genai-specs` - Work items structure, EARS format, ACID tasks, verification protocol
+- `rag-architecture` - RAG/CAG patterns, embeddings, vector search, Firecrawl integration
+
+**Usage Notes**:
+- Commands automate workflow steps (symlink management, verification, testing)
+- Skills provide specialized knowledge loaded as context
+- Commands integrate with `.work-items/` and `.claude/plans/` structure
+- Use commands for execution, skills for understanding
+
 ## How I Should Work
 
 **✅ DO**:
