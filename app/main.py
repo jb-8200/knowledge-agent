@@ -4,7 +4,7 @@ Main application entry point for the document ingestion and Q&A system.
 """
 
 from fastapi import FastAPI
-from app.routes import upload
+from app.routes import upload, session
 
 app = FastAPI(
     title="Knowledge Base Agent",
@@ -14,6 +14,7 @@ app = FastAPI(
 
 # Include routers
 app.include_router(upload.router, prefix="/upload", tags=["ingestion"])
+app.include_router(session.router)
 
 
 @app.get("/")
