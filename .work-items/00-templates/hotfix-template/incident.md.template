@@ -1,0 +1,75 @@
+# Incident Report: {{ISSUE_TITLE}}
+
+## Discovery
+- **Reported**: {{TIMESTAMP}}
+- **Reporter**: {{REPORTER}}
+- **Environment**: {{ENVIRONMENT}}
+- **Severity**: {{SEVERITY}}
+
+## Impact
+
+### User Impact
+{{DESCRIBE_USER_IMPACT}}
+- Number of users affected:
+- Business impact:
+- Data loss/corruption:
+
+### System Impact
+{{DESCRIBE_SYSTEM_IMPACT}}
+- Services affected:
+- Performance degradation:
+- Error rates:
+
+## Symptoms
+
+### Observed Behavior
+{{WHAT_USERS_SEE}}
+
+Examples:
+- Users see error: "Connection timeout"
+- Upload fails silently
+- Search returns empty results
+
+### Error Messages
+```
+{{ERROR_LOGS}}
+```
+
+### Reproduction Steps
+1. {{STEP_1}}
+2. {{STEP_2}}
+3. {{STEP_3}}
+Result: {{FAILURE_CONDITION}}
+
+## Affected Components
+
+### Code Components
+- {{MODULE_1}} - {{DESCRIPTION}}
+- {{MODULE_2}} - {{DESCRIPTION}}
+
+### Infrastructure
+- {{SERVICE_1}} - {{DESCRIPTION}}
+- {{SERVICE_2}} - {{DESCRIPTION}}
+
+## Timeline
+
+| Time | Event |
+|------|-------|
+| {{TIME_1}} | {{EVENT_1}} |
+| {{TIME_2}} | Issue discovered |
+| {{TIME_3}} | Hotfix initiated |
+| {{TIME_4}} | Fix deployed |
+| {{TIME_5}} | Verified resolved |
+
+## Initial Assessment
+
+### Suspected Cause
+{{INITIAL_HYPOTHESIS}}
+
+### Urgency Justification
+{{WHY_HOTFIX_NOT_REGULAR_FIX}}
+
+## References
+- Production logs: {{LOG_LINK}}
+- Monitoring dashboard: {{DASHBOARD_LINK}}
+- Related issues: {{ISSUE_LINKS}}

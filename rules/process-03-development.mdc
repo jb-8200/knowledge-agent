@@ -45,6 +45,21 @@ Only commit when:
 - Commit messages clearly state whether the commit contains structural or behavioral changes
 - Use small, frequent commits rather than large, infrequent ones
 
+### Hotfix Exception
+
+For **critical production issues** requiring immediate attention, use the `/hotfix` command which enables parallel work:
+
+- **Branch Convention**: Use `hotfix/{issue-slug}` branches (exception to trunk-based development)
+- **Parallel Execution**: Hotfix subagent works independently without blocking main feature development
+- **TDD Still Required**: Must write failing test that reproduces bug before implementing fix
+- **Commit Prefix**: Use `hotfix: {description}` for all hotfix commits
+- **Documentation**: Create minimal spec in `.work-items/00-hotfixes/{timestamp-slug}/` with incident, root-cause, and fix documentation
+- **Merge Strategy**: Merge hotfix to main after verification, then continue feature work
+
+This is the **only approved exception** to trunk-based development. All other work stays on main branch following the standard spec-driven workflow.
+
+See: ADR 001 (Edge-Case Handling) and `.claude/commands/hotfix.md` for details.
+
 ## Refactoring Guidelines
 
 - Refactor only when tests are passing (in the "Green" phase)

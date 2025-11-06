@@ -1,0 +1,289 @@
+# Fix Documentation: {{ISSUE_TITLE}}
+
+## Summary
+{{ONE_SENTENCE_SUMMARY}}
+
+## Root Cause
+{{BRIEF_ROOT_CAUSE}}
+
+See `root-cause.md` for detailed analysis.
+
+## Solution
+
+### Approach
+{{HIGH_LEVEL_APPROACH}}
+
+Example:
+```
+Added input validation to vector_store.insert_vectors() to handle
+None metadata by replacing with empty dict {}.
+```
+
+### Changes Made
+
+#### File: {{FILE_1}}
+**Before:**
+```python
+{{OLD_CODE_SNIPPET}}
+```
+
+**After:**
+```python
+{{NEW_CODE_SNIPPET}}
+```
+
+**Why**: {{JUSTIFICATION}}
+
+#### File: {{FILE_2}}
+**Before:**
+```python
+{{OLD_CODE_SNIPPET}}
+```
+
+**After:**
+```python
+{{NEW_CODE_SNIPPET}}
+```
+
+**Why**: {{JUSTIFICATION}}
+
+### Code Changes Summary
+- **Files Modified**: {{FILE_COUNT}}
+- **Lines Added**: {{ADDITIONS}}
+- **Lines Removed**: {{DELETIONS}}
+- **Net Change**: {{NET_CHANGE}}
+
+## Test Coverage
+
+### New Tests Added
+
+#### Test: {{TEST_NAME_1}}
+**File**: `tests/{{TEST_FILE}}`
+
+**Purpose**: {{TEST_PURPOSE}}
+
+**Code**:
+```python
+{{TEST_CODE}}
+```
+
+**Result**: {{PASS_FAIL}}
+
+#### Test: {{TEST_NAME_2}}
+**File**: `tests/{{TEST_FILE}}`
+
+**Purpose**: {{TEST_PURPOSE}}
+
+**Code**:
+```python
+{{TEST_CODE}}
+```
+
+**Result**: {{PASS_FAIL}}
+
+### Test Results
+
+```bash
+{{TEST_OUTPUT}}
+```
+
+**Summary**:
+- ✅ {{PASSED_COUNT}} tests passed
+- ❌ {{FAILED_COUNT}} tests failed
+- ⏭️  {{SKIPPED_COUNT}} tests skipped
+
+### Regression Verification
+- [x] Full test suite run
+- [x] No new failures introduced
+- [x] All existing tests still pass
+- [x] New tests reproduce bug (failed before fix)
+- [x] New tests pass after fix
+
+## Verification Steps
+
+### Manual Testing
+1. {{MANUAL_TEST_STEP_1}}
+2. {{MANUAL_TEST_STEP_2}}
+3. {{MANUAL_TEST_STEP_3}}
+
+Expected: {{EXPECTED_BEHAVIOR}}
+Actual: {{ACTUAL_BEHAVIOR}}
+
+### Production Verification (After Deploy)
+- [ ] Monitor error logs for 1 hour
+- [ ] Check affected endpoints return 200
+- [ ] Verify user reports stop coming in
+- [ ] Confirm metrics return to normal
+
+## Performance Impact
+
+### Before Fix
+{{PERFORMANCE_BEFORE}}
+
+Examples:
+- Response time: 250ms
+- Error rate: 12%
+- Throughput: 50 req/sec
+
+### After Fix
+{{PERFORMANCE_AFTER}}
+
+Examples:
+- Response time: 245ms (no regression)
+- Error rate: 0%
+- Throughput: 50 req/sec (no change)
+
+### Conclusion
+{{PERFORMANCE_VERDICT}}
+
+Example: "No performance degradation. Fix adds O(1) validation check."
+
+## Deployment Notes
+
+### Prerequisites
+{{DEPLOYMENT_PREREQS}}
+
+Examples:
+- No database migration needed
+- No config changes required
+- Backward compatible
+
+### Deployment Steps
+1. {{DEPLOY_STEP_1}}
+2. {{DEPLOY_STEP_2}}
+3. {{DEPLOY_STEP_3}}
+
+### Rollback Plan
+{{ROLLBACK_PROCEDURE}}
+
+Example:
+```bash
+# If issues arise:
+git revert {{COMMIT_SHA}}
+git push origin main
+# Redeploy previous version
+```
+
+### Monitoring
+Watch these metrics post-deploy:
+- {{METRIC_1}} - Should {{EXPECTED_1}}
+- {{METRIC_2}} - Should {{EXPECTED_2}}
+- {{METRIC_3}} - Should {{EXPECTED_3}}
+
+## Alternative Approaches Considered
+
+### Alternative 1: {{APPROACH_NAME}}
+**Description**: {{APPROACH_DESCRIPTION}}
+
+**Pros**:
+- {{PRO_1}}
+- {{PRO_2}}
+
+**Cons**:
+- {{CON_1}}
+- {{CON_2}}
+
+**Why Not Chosen**: {{REJECTION_REASON}}
+
+### Alternative 2: {{APPROACH_NAME}}
+**Description**: {{APPROACH_DESCRIPTION}}
+
+**Pros**:
+- {{PRO_1}}
+- {{PRO_2}}
+
+**Cons**:
+- {{CON_1}}
+- {{CON_2}}
+
+**Why Not Chosen**: {{REJECTION_REASON}}
+
+## Technical Debt
+
+### Created by This Fix
+{{TECH_DEBT_CREATED}}
+
+Examples:
+- Band-aid fix, not architectural solution
+- TODO: Refactor chunking service (see work item XX)
+- Validation should be centralized
+
+### Addressed by This Fix
+{{TECH_DEBT_RESOLVED}}
+
+Examples:
+- Removed unsafe null pointer access
+- Added missing error handling
+- Improved input validation
+
+## Follow-Up Work
+
+### Immediate (This Week)
+- [ ] {{FOLLOWUP_1}}
+- [ ] {{FOLLOWUP_2}}
+
+Examples:
+- [ ] Add monitoring for empty file uploads
+- [ ] Update documentation
+
+### Short-Term (Next Sprint)
+- [ ] {{FOLLOWUP_1}}
+- [ ] {{FOLLOWUP_2}}
+
+Examples:
+- [ ] Refactor chunking service for better error handling
+- [ ] Add property-based tests
+- [ ] Create work item: {{WORK_ITEM_ID}}
+
+### Long-Term (Roadmap)
+- [ ] {{FOLLOWUP_1}}
+- [ ] {{FOLLOWUP_2}}
+
+Examples:
+- [ ] Architectural review of error handling strategy
+- [ ] Implement comprehensive validation framework
+
+## Git Information
+
+### Branch
+`{{BRANCH_NAME}}`
+
+### Commit
+```
+commit {{COMMIT_SHA}}
+Author: {{AUTHOR}}
+Date: {{COMMIT_DATE}}
+
+{{COMMIT_MESSAGE}}
+```
+
+### Diff Summary
+```bash
+{{GIT_DIFF_STAT}}
+```
+
+## Related
+
+- Incident Report: `incident.md`
+- Root Cause Analysis: `root-cause.md`
+- ADR: {{ADR_LINK}}
+- Work Items: {{WORK_ITEM_LINKS}}
+
+## Sign-Off
+
+- **Fixed By**: {{DEVELOPER}}
+- **Reviewed By**: {{REVIEWER}}
+- **Deployed By**: {{DEPLOYER}}
+- **Verified By**: {{VERIFIER}}
+- **Date**: {{COMPLETION_DATE}}
+- **Status**: {{STATUS}}
+
+## Post-Mortem Actions
+- [x] Incident documented
+- [x] Root cause identified
+- [x] Fix implemented and tested
+- [x] Fix deployed to production
+- [x] Monitoring verified fix works
+- [ ] Lessons learned shared with team
+- [ ] Process improvements identified
+- [ ] Follow-up work items created

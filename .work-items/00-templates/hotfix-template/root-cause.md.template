@@ -1,0 +1,210 @@
+# Root Cause Analysis: {{ISSUE_TITLE}}
+
+## Executive Summary
+{{ONE_SENTENCE_ROOT_CAUSE}}
+
+## Detailed Analysis
+
+### What Happened
+{{TECHNICAL_DESCRIPTION}}
+
+Example:
+```
+The vector_store.insert_vectors() function was called with None
+for chunk_metadata, causing a NoneType error when attempting
+to access metadata['doc_id'].
+```
+
+### Why It Happened
+
+#### Direct Cause
+{{IMMEDIATE_TRIGGER}}
+
+Example:
+```
+The chunking service returned None for metadata when processing
+empty documents, instead of returning an empty dict {}.
+```
+
+#### Root Cause
+{{UNDERLYING_ISSUE}}
+
+Example:
+```
+Missing validation in chunking service. The function assumed
+all documents would have content, but didn't handle edge case
+of completely empty files.
+```
+
+### Why It Wasn't Caught Earlier
+
+#### Testing Gap
+{{WHAT_TESTS_MISSED}}
+
+Examples:
+- No test for empty file uploads
+- Test fixtures all had content
+- Edge case not in test suite
+
+#### Code Review Gap
+{{WHAT_REVIEW_MISSED}}
+
+Examples:
+- Reviewer didn't notice missing null check
+- Function preconditions not documented
+- Type hints were absent
+
+#### Monitoring Gap
+{{WHAT_MONITORING_MISSED}}
+
+Examples:
+- Error logs didn't surface this specific error
+- No alerts for NoneType exceptions
+- Metrics didn't track empty uploads
+
+## Contributing Factors
+
+### Technical Factors
+1. {{TECHNICAL_FACTOR_1}}
+2. {{TECHNICAL_FACTOR_2}}
+
+Examples:
+- Lack of type hints (mypy would have caught this)
+- Missing input validation
+- Inadequate error handling
+
+### Process Factors
+1. {{PROCESS_FACTOR_1}}
+2. {{PROCESS_FACTOR_2}}
+
+Examples:
+- Tests didn't cover edge cases
+- Code review checklist missing validation item
+- No pre-deployment smoke tests for empty files
+
+## Impact Chain
+
+```
+{{ROOT_CAUSE}}
+    ↓
+{{INTERMEDIATE_FAILURE}}
+    ↓
+{{SYSTEM_FAILURE}}
+    ↓
+{{USER_IMPACT}}
+```
+
+Example:
+```
+Missing null check in chunker
+    ↓
+chunker.process() returns None for metadata
+    ↓
+vector_store.insert_vectors() crashes on None.get()
+    ↓
+Upload fails, user sees 500 error
+```
+
+## Fix Validation
+
+### How Fix Addresses Root Cause
+{{FIX_DESCRIPTION}}
+
+Example:
+```
+Added validation at chunker.process() entry point:
+- Check if document is empty
+- Return empty dict {} instead of None
+- Add logging for empty document handling
+```
+
+### Why This Fix is Sufficient
+{{FIX_JUSTIFICATION}}
+
+Example:
+```
+- Fixes direct cause (None metadata)
+- Handles edge case properly
+- Maintains backward compatibility
+- Adds defensive programming
+```
+
+### What This Fix Doesn't Address
+{{KNOWN_LIMITATIONS}}
+
+Example:
+```
+- Doesn't optimize performance for large empty file batches
+- Doesn't add comprehensive empty-file handling across all parsers
+- Those improvements deferred to F02 refactoring work item
+```
+
+## Prevention Measures
+
+### Immediate Actions (Done in Hotfix)
+- [x] {{ACTION_1}}
+- [x] {{ACTION_2}}
+
+Examples:
+- [x] Added null check in vector_store.insert_vectors()
+- [x] Added test for empty file upload
+- [x] Added test for None metadata handling
+
+### Short-Term Actions (Next Sprint)
+- [ ] {{ACTION_1}}
+- [ ] {{ACTION_2}}
+
+Examples:
+- [ ] Add type hints to all chunking functions
+- [ ] Add mypy to pre-commit hooks
+- [ ] Create comprehensive edge case test suite
+
+### Long-Term Actions (Roadmap)
+- [ ] {{ACTION_1}}
+- [ ] {{ACTION_2}}
+
+Examples:
+- [ ] Implement property-based testing for parsers
+- [ ] Add contract testing between chunker and vector store
+- [ ] Build staging environment for smoke tests
+
+## Lessons Learned
+
+### What Went Well
+{{POSITIVE_OBSERVATIONS}}
+
+Examples:
+- Hotfix process worked smoothly
+- TDD caught the issue during fix
+- Team responded quickly
+
+### What Could Be Improved
+{{IMPROVEMENT_OPPORTUNITIES}}
+
+Examples:
+- Need better edge case testing
+- Should have caught this in code review
+- Monitoring should alert on NoneType errors
+
+### Recommendations for Similar Systems
+{{GENERAL_GUIDANCE}}
+
+Examples:
+- Always validate function inputs
+- Use type hints and mypy
+- Test with empty/null/edge cases
+- Add pre-conditions to function docstrings
+
+## Related
+
+- Incident Report: `incident.md`
+- Fix Documentation: `fix.md`
+- Related ADRs: {{ADR_LINKS}}
+- Similar Issues: {{ISSUE_LINKS}}
+
+## Review
+
+- **Analyzed By**: {{ANALYST}}
+- **Reviewed By**: {{REVIEWER}}
+- **Date**: {{REVIEW_DATE}}
+- **Status**: {{STATUS}}
