@@ -39,7 +39,9 @@
       "Bash(./venv/bin/pytest tests/test_link_ingestion.py -v --tb=short)",
       "Bash(./venv/bin/pytest tests/test_parsers.py tests/test_chunker.py -v)",
       "Bash(curl:*)",
-      "Bash(./venv/bin/pytest:*)"
+      "Bash(./venv/bin/pytest:*)",
+      "WebFetch(domain:code.claude.com)",
+      "WebSearch"
     ],
     "deny": [],
     "ask": []
